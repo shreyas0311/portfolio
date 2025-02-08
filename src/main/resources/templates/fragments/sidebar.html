@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" th:href="@{/css/admin/sidebar.css}">
+</head>
+
+<body>
+    <div th:fragment="sidebar" class="col-auto col-md-3 col-xl-2 sidebar">
+        <nav class="nav flex-column">
+            <a class="nav-link" th:href="@{/admin/dashboard}"
+                th:classappend="${currentPage == 'dashboard'} ? 'active'"><i
+                    class="bi bi-speedometer2 me-2"></i>Dashboard</a>
+            <a class="nav-link" th:href="@{/admin/about}" th:classappend="${currentPage == 'about'} ? 'active'"><i
+                    class="bi bi-info-circle me-2"></i>About</a>
+            <a class="nav-link" th:href="@{/admin/project}" th:classappend="${currentPage == 'projects'} ? 'active'"><i
+                    class="bi bi-folder me-2"></i>Projects</a>
+            <a class="nav-link" th:href="@{/admin/messages}" th:classappend="${currentPage == 'messages'} ? 'active'"><i
+                    class="bi bi-envelope me-2"></i>Messages</a>
+        </nav>
+    </div>
+</body>
+
+</html>

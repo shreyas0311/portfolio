@@ -1,0 +1,104 @@
+.navbar {
+    background-color: #0D1117;
+    padding: 1rem;
+}
+
+.section {
+    min-height: 100vh;
+    padding: 80px 0;
+}
+
+.nav-link {
+    color: #ffffff;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #0d6efd;
+}
+
+.about-section {
+    background-image: url('/images/code-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+}
+
+.about-overlay {
+    background: rgba(13, 17, 23, 0.9);
+    padding: 80px 0;
+}
+
+.about-content {
+    border-left: 4px solid #0d6efd;
+    padding-left: 20px;
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+}
+
+.skills-list li {
+    margin: 10px 0;
+    padding: 8px 15px;
+    background: rgba(13, 110, 253, 0.1);
+    border-radius: 4px;
+    border: 1px solid rgba(13, 110, 253, 0.2);
+}
+
+.footer {
+    background-color: #0D1117;
+    padding: 40px 0 20px;
+}
+
+.social-links a {
+    color: #fff;
+    font-size: 24px;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #0d6efd;
+}
+
+#chat-widget {
+    transition: all 0.3s ease;
+}
+
+#chat-widget .chat-content {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+}
+
+#toggle-chat {
+    box-shadow: 0 2px 12px rgba(13, 110, 253, 0.4);
+}
+
+#toggle-chat:hover {
+    transform: scale(1.05);
+}
+
+#chat-input {
+    border: 1px solid #0d6efd;
+    border-radius: 4px;
+}
+
+#send-message {
+    border: 1px solid #0d6efd;
+    border-radius: 4px;
+    margin-left: 4px;
+}
+
+.input-group {
+    gap: 4px;
+}
+
+/* Update the contact section background */
+.contact-section {
+    background-color: #0F1319;
+    /* padding: 60px 0; */
+}

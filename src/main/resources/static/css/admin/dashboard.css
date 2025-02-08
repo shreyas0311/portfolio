@@ -1,0 +1,68 @@
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    padding-top: 76px;
+}
+
+.nav-link {
+    color: #ffffff;
+    padding: 10px 20px;
+}
+
+.nav-link:hover {
+    background-color: #21262d;
+    color: #ffffff;
+}
+
+.navbar {
+    background-color: #0D1117;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+/* Project page */
+.selected-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill-card {
+    background: #0d6efd;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.remove-skill {
+    cursor: pointer;
+    font-size: 14px;
+}
+
+select[multiple] {
+    padding: 10px;
+}
+
+select[multiple] option {
+    padding: 5px;
+    margin: 2px 0;
+    border-radius: 4px;
+}
+
+select[multiple] option:checked {
+    background: #0d6efd linear-gradient(0deg, #0d6efd 0%, #0d6efd 100%);
+    color: white;
+}

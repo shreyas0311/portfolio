@@ -1,0 +1,27 @@
+.navbar {
+    background-color: #0D1117;
+    padding: 10px 20px;
+    border-bottom: 1px solid #373b3e;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.navbar .logo img {
+    height: 50px;
+}
+
+.navbar .dropdown-toggle::after {
+    display: none;
+}
+
+.navbar .dropdown-menu {
+    margin-top: 8px;
+}
+
+.navbar i {
+    background-color: #0D1117;
+    color: white;
+}

@@ -1,0 +1,196 @@
+.loading-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    height: 220px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.loading-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    transform: scale(0.8);
+}
+
+.items-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 10px;
+}
+
+.loading-text {
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.progress-bar {
+    width: 150px;
+    height: 4px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #4CAF50, #2196F3);
+    animation: progress 2s ease-in-out infinite;
+}
+
+@keyframes progress {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Enhance burger and coffee animations */
+.burger {
+    position: relative;
+    width: 70px;
+    height: 70px;
+}
+
+.bun-top {
+    position: absolute;
+    width: 80px;
+    height: 25px;
+    background: #F4A460;
+    border-radius: 25px 25px 5px 5px;
+    top: 0;
+}
+
+.lettuce {
+    position: absolute;
+    width: 78px;
+    height: 15px;
+    background: #90EE90;
+    border-radius: 5px;
+    top: 25px;
+}
+
+.patty {
+    position: absolute;
+    width: 80px;
+    height: 15px;
+    background: #8B4513;
+    border-radius: 5px;
+    top: 37px;
+}
+
+.bun-bottom {
+    position: absolute;
+    width: 80px;
+    height: 18px;
+    background: #F4A460;
+    border-radius: 5px 5px 25px 25px;
+    bottom: 0;
+}
+
+/* Coffee Cup Styles */
+.coffee-cup {
+    position: relative;
+    width: 50px;
+    height: 60px;
+}
+
+.cup {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
+    border: 3px solid #333;
+    border-radius: 5px 5px 25px 25px;
+}
+
+.liquid {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 70%;
+    background: #6F4E37;
+    border-radius: 0 0 22px 22px;
+}
+
+.steam {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    animation: steam 1s infinite;
+}
+
+/* Animations */
+@keyframes steam {
+    0% {
+        height: 0px;
+        opacity: 0;
+    }
+
+    50% {
+        height: 20px;
+        opacity: 1;
+    }
+
+    100% {
+        height: 0px;
+        opacity: 0;
+    }
+}
+
+@keyframes flip {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Add subtle pulse animation to the container */
+@keyframes pulse {
+    0% {
+        transform: scale(0.8);
+    }
+
+    50% {
+        transform: scale(0.82);
+    }
+
+    100% {
+        transform: scale(0.8);
+    }
+}
+
+.loading-content {
+    animation: pulse 2s ease-in-out infinite;
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Projects</title>
+    <link rel="icon" type="image/svg+xml" th:href="@{/images/favicon.svg}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" th:href="@{/css/admin/dashboard.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/sidebar.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/navbar.css}">
+</head>
+
+<body class="bg-dark">
+    <!-- Update navbar fragment -->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <!-- Update sidebar fragment -->
+    <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Add this toast for error message -->
+        <div class="position-fixed top-5 end-0" style="z-index: 11">
+            <div id="projectToast" class="toast bg-danger text-white" role="alert" aria-live="assertive"
+                aria-atomic="true" th:if="${projects == null}">
+                <div class="toast-header bg-danger text-white">
+                    <strong class="me-auto">Error</strong>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"
+                        aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    No projects found in the database.
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="text-light">Projects</h2>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProjectModal">
+                Add Project
+            </button>
+        </div>
+
+        <!-- Projects Table -->
+        <div class="table-responsive">
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th>Project Name</th>
+                        <th>Description</th>
+                        <th>Project Link</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Duration</th>
+                        <th>Skills</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:if="${projects != null}" th:each="project : ${projects}">
+                        <td th:text="${project.projectName}"></td>
+                        <td th:text="${project.description}"></td>
+                        <td><a th:href="${project.projectLink}" th:text="${project.projectLink}">View Project</a></td>
+                        <td th:text="${#temporals.format(project.projectStartDate, 'yyyy-MM-dd')}"></td>
+                        <td th:text="${#temporals.format(project.projectEndDate, 'yyyy-MM-dd')}"></td>
+                        <td th:text="${project.duration}"></td>
+                        <td th:text="${project.skills}"></td>
+                        <td>
+                            <i class="bi bi-pencil-square ms-1" data-bs-toggle="modal" data-bs-target="#addProjectModal"
+                                th:attr="onclick='editProject(' + ${project.id} + ')'"></i>
+                            <i class="bi bi-trash ms-2"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Your existing modal content -->
+        <div class="modal fade" id="addProjectModal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content bg-dark text-light">
+                    <div class="modal-header border-secondary">
+                        <h5 class="modal-title">Add Project</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form th:action="@{/admin/project/save}" method="post">
+                            <div class="mb-3">
+                                <label for="projectName" class="form-label">Project Name</label>
+                                <input type="text" class="form-control bg-dark text-light border-secondary"
+                                    id="projectName" name="projectName" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="projectDescription" class="form-label">Project Description</label>
+                                <textarea class="form-control bg-dark text-light border-secondary"
+                                    id="projectDescription" name="projectDescription" rows="3" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="projectLink" class="form-label">Project Link (Optional)</label>
+                                <input type="url" class="form-control bg-dark text-light border-secondary"
+                                    id="projectLink" name="projectLink">
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="startDate" class="form-label">Start Date</label>
+                                    <input type="date" class="form-control bg-dark text-light border-secondary"
+                                        id="startDate" name="startDate" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="endDate" class="form-label">End Date</label>
+                                    <input type="date" class="form-control bg-dark text-light border-secondary"
+                                        id="endDate" name="endDate" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="duration" class="form-label">Project Duration</label>
+                                <input type="text" class="form-control bg-dark text-light border-secondary"
+                                    id="duration" readonly>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="skills" class="form-label">Skills</label>
+                                <div id="selectedSkillsContainer" class="selected-skills mb-2"></div>
+                                <select class="form-select bg-dark text-light border-secondary" id="skills"
+                                    name="skills[]" multiple size="5" required>
+                                    <option th:each="skill : ${technicalSkills}" th:value="${skill.toLowerCase()}"
+                                        th:text="${skill}">
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="text-end">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save Project</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script th:src="@{/js/project.js}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script th:if="${projects == null}">
+        document.addEventListener('DOMContentLoaded', function () {
+            var toast = new bootstrap.Toast(document.getElementById('projectToast'));
+            toast.show();
+        });
+    </script>
+</body>
+
+</html>
