@@ -8,16 +8,12 @@
     <!-- favicon icon -->
     <link rel="icon" type="image/svg+xml" th:href="@{/images/favicon.svg}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" th:href="@{/css/common/loading-screen.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"> -->
     <link rel="stylesheet" th:href="@{/css/index.css}" />
 
 </head>
 
 <body class="bg-dark text-light">
-    <!-- Loading Screen -->
-    <div th:replace="fragments/loading-screen :: div"></div>
-
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
@@ -97,7 +93,7 @@
             <h2 class="mb-4">Contact Me</h2>
             <div class="row">
                 <div class="col-md-8">
-                    <form>
+                    <form method="post" th:action="@{/send-message}" class="contact-form">
                         <div class="mb-3">
                             <label for="name" class="form-label">Your Name</label>
                             <input type="text" class="form-control bg-dark text-light" name="name" placeholder="Name">
@@ -119,15 +115,16 @@
                     <div class="d-flex flex-column gap-3">
                         <div>
                             <i class="bi bi-envelope-fill me-2"></i>
-                            email@example.com
+                            shreyasmathur0311@gmail.com
                         </div>
                         <div>
                             <i class="bi bi-linkedin me-2"></i>
-                            linkedin.com/in/username
+                            <a href="https://www.linkedin.com/in/shreyas-mathur-44a3631b0/" target="_blank"
+                                class="text-light">Linkedin</a>
                         </div>
                         <div>
                             <i class="bi bi-github me-2"></i>
-                            github.com/username
+                            <a href="https://github.com/shreyas0311" target="_blank" class="text-light">GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -175,9 +172,22 @@
         </div>
     </footer>
 
+    <!-- Toast Container -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="messageToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto" id="toastTitle">Notification</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" id="toastMessage">
+                <span th:if="${success}" th:text="${success}" class="text-success"></span>
+                <span th:if="${error}" th:text="${error}" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" th:src="@{/js/index.js}"></script>
-    <script type="module" th:src="@{/js/common/loadingScreen.js}"></script>
 </body>
 
 </html>
