@@ -1,6 +1,5 @@
 package com.portfolio.my_portfolio.admin.login;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -61,9 +60,9 @@ public class LoginController {
     }
 
     @PostMapping("/logout")
-    public ResponseEntity<Void> handleLogout(HttpSession session) {
+    public String handleLogout(HttpSession session) {
         sessionManagement.invalidateSession(session);
-        return ResponseEntity.ok().build();
+        return "admin/logout";
     }
 
     private void addNoCacheHeaders(HttpServletResponse response) {
