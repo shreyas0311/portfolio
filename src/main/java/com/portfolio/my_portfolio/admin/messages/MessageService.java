@@ -18,4 +18,8 @@ public class MessageService {
     public List<GetMessages> getMessages() {
         return messageRepository.getMessages();
     }
+
+    public boolean deleteMessage(int id) {
+        return messageRepository.deleteMessage(id);
+    }
 }
