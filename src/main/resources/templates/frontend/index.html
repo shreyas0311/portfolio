@@ -68,19 +68,31 @@
                     <div class="col-md-6">
                         <div class="about-content">
                             <h2 class="mb-4">Hi, I'm Shreyas Mathur</h2>
-                            <p class="lead">Full Stack Developer | Content Creator</p>
-                            <p>Passionate about creating efficient and scalable web applications with expertise in Java
-                                and Spring Boot. Turning complex problems into simple, beautiful solutions.</p>
+                            <p class="lead">Techie | Sports Content Creator </p>
+                            <p>A software professional who brings together the precision of coding and the passion of
+                                sports content creation.
+                                With a strong foundation in full-stack development, I build robust web applications
+                                while also creating
+                                engaging sports content that captures the excitement of the game.</p>
+                            <div class="mt-4">
+                                <p class="mb-2">Want to see my sports content in action?</p>
+                                <a href="https://www.youtube.com/@SportswithShreyas" target="_blank"
+                                    class="btn btn-danger">
+                                    <i class="bi bi-youtube me-2"></i>Check out my YouTube Channel
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="p-4 bg-opacity-75 rounded">
                             <h4 class="text-primary mb-3">Technical Skills</h4>
                             <ul class="skills-list">
-                                <li><i class="bi bi-code-slash me-2"></i>Java / Spring Boot</li>
-                                <li><i class="bi bi-database me-2"></i>MySQL</li>
-                                <li><i class="bi bi-braces me-2"></i>HTML / CSS</li>
-                                <li><i class="bi bi-filetype-js me-2"></i>JavaScript</li>
+                                <li class="d-flex align-items-center"><i class="bi bi-code-slash me-2"></i>Java / Spring
+                                    Boot</li>
+                                <li class="d-flex align-items-center"><i class="bi bi-database me-2"></i>MySQL</li>
+                                <li class="d-flex align-items-center"><i class="bi bi-braces me-2"></i>HTML / CSS</li>
+                                <li class="d-flex align-items-center"><i class="bi bi-filetype-js me-2"></i>JavaScript,
+                                    ReactJS</li>
                             </ul>
                         </div>
                     </div>
@@ -90,10 +102,10 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="section">
+    <section id="projects" class="section py-5">
         <div class="container">
-            <h2 class="mb-4">Projects</h2>
-            <div class="row g-4">
+            <h2 class="text-center mb-5">Projects</h2>
+            <div class="row g-4 py-3">
                 <!-- Loop through projects from the model -->
                 <div class="col-md-4" th:each="project : ${projects}">
                     <div class="card bg-dark text-light border-primary project-card">
@@ -120,11 +132,10 @@
         </div>
     </section>
 
-
     <!-- Contact Section -->
-    <section id="contact" class="contact-section section">
+    <section id="contact" class="contact-section">
         <div class="container">
-            <h2 class="mb-4">Contact Me</h2>
+            <h2 class="mb-5 pb-3 text-center">Contact Me</h2>
             <div class="row">
                 <div class="col-md-8">
                     <form method="post" th:action="@{/send-message}" class="contact-form">
